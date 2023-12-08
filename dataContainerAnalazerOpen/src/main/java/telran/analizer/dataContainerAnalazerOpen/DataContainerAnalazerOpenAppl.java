@@ -22,6 +22,7 @@ public class DataContainerAnalazerOpenAppl {
 	StreamBridge streamBridge;
 	@Value("${app.sensor.producer.binding.name:containerInfoProducer-out-0}")
 	String bindingName;
+	@Autowired
 	SensorReduser sensorReduser;
 	public static void main(String[] args) {
 		SpringApplication.run(DataContainerAnalazerOpenAppl.class, args);
