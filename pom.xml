@@ -13,6 +13,7 @@
 	<version>0.0.1</version>
 	<name>computerized-storehouse</name>
 	<description>Final project in TelRan</description>
+	<packaging>pom</packaging>
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.0-RC1</spring-cloud.version>
@@ -92,4 +93,7 @@
 		</repository>
 	</repositories>
 
+	<modules>
+		<module>dataContainerAnalazerOpen</module>
+	</modules>
 </project>
