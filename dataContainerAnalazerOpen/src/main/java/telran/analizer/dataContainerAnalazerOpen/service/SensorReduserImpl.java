@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerDemand;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerSensor;
 import telran.analizer.dataContainerAnalazerOpen.entitise.ContainerPriveuseState;
 import telran.analizer.dataContainerAnalazerOpen.repo.ContainerSensorRepo;
+import telran.coumputerizedWarehouse.dto.ContainerDemand;
+import telran.coumputerizedWarehouse.dto.ContainerSensor;
 
 @Service
 @RequiredArgsConstructor
