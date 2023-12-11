@@ -10,9 +10,10 @@ import org.springframework.context.annotation.Bean;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerDemand;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerSensor;
+
 import telran.analizer.dataContainerAnalazerOpen.service.SensorReduser;
+import telran.coumputerizedWarehouse.dto.ContainerDemand;
+import telran.coumputerizedWarehouse.dto.ContainerSensor;
 
 @SpringBootApplication
 @RequiredArgsConstructor

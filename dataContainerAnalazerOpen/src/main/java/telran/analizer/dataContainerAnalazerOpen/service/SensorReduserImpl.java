@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerDemand;
-import telran.analizer.dataContainerAnalazerOpen.dto.ContainerSensor;
 import telran.analizer.dataContainerAnalazerOpen.entitise.ContainerPriveuseState;
 import telran.analizer.dataContainerAnalazerOpen.repo.ContainerSensorRepo;
+import telran.coumputerizedWarehouse.dto.ContainerDemand;
+import telran.coumputerizedWarehouse.dto.ContainerSensor;
 
 @Service
 @RequiredArgsConstructor
@@ -26,14 +26,12 @@ public class SensorReduserImpl implements SensorReduser {
 		ContainerPriveuseState newSensorInfo = new ContainerPriveuseState(sensorInfo.containerId(),
 				sensorInfo.currentVolume());
 		privState.save(newSensorInfo);
-		if (newSensorInfo.getCurrentVolume() > limit)
-			return null;
-		else if (lastSensorInfo == null&& newSensorInfo.getCurrentVolume() <= limit) 
-			return new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
-		else if(lastSensorInfo!=null&& lastSensorInfo.getCurrentVolume()>limit&& newSensorInfo.getCurrentVolume() <= limit)
-			return new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
-		else 
-			return null;
+		ContainerDemand res=null;
+		 if (newSensorInfo.getCurrentVolume() <= limit&&(lastSensorInfo == null|| lastSensorInfo.getCurrentVolume()>limit) )
+			res= new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
+		
+		return res;
+		
 	}
 
 }
