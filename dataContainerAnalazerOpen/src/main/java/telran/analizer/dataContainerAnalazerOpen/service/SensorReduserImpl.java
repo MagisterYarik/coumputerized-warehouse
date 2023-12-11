@@ -26,14 +26,12 @@ public class SensorReduserImpl implements SensorReduser {
 		ContainerPriveuseState newSensorInfo = new ContainerPriveuseState(sensorInfo.containerId(),
 				sensorInfo.currentVolume());
 		privState.save(newSensorInfo);
-		if (newSensorInfo.getCurrentVolume() > limit)
-			return null;
-		else if (lastSensorInfo == null&& newSensorInfo.getCurrentVolume() <= limit) 
-			return new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
-		else if(lastSensorInfo!=null&& lastSensorInfo.getCurrentVolume()>limit&& newSensorInfo.getCurrentVolume() <= limit)
-			return new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
-		else 
-			return null;
+		ContainerDemand res=null;
+		 if (newSensorInfo.getCurrentVolume() <= limit&&(lastSensorInfo == null|| lastSensorInfo.getCurrentVolume()>limit) )
+			res= new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
+		
+		return res;
+		
 	}
 
 }
