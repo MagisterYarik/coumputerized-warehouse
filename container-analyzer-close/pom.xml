@@ -5,7 +5,7 @@
     <artifactId>computerized-storehouse</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>dataContainerAnalazerOpen</artifactId>
+  <artifactId>container-analyzer-close</artifactId>
   <dependencies>
 	  <dependency>
 		  <groupId>org.springframework.boot</groupId>

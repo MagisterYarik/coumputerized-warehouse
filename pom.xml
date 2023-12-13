@@ -101,5 +101,6 @@
 
 	<modules>
 		<module>dataContainerAnalazerOpen</module>
+		<module>container-analyzer-close</module>
 	</modules>
 </project>
