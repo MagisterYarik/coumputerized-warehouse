@@ -29,7 +29,7 @@ public class SensorReduserImpl implements SensorReduser {
 			log.debug("container {} not found in Redis", id);
 		ContainerPriveuseState newSensorInfo = new ContainerPriveuseState(id, sensorInfo.currentVolume());
 		privState.save(newSensorInfo);
-		log.trace("Redis updated for container {}",id);
+		log.trace("Redis updated for container {}", id);
 
 		ContainerDemand res = null;
 		if (newSensorInfo.getCurrentVolume() <= limit
@@ -37,9 +37,9 @@ public class SensorReduserImpl implements SensorReduser {
 			res = new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
 			log.debug("Create order demand {} for container {}", res, id);
 
-		}else
+		} else
 			log.trace("no order demand for container {}", id);
-		
+
 		return res;
 
 	}
