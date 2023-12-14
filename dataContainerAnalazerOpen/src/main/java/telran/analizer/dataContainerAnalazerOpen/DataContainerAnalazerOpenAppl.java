@@ -19,12 +19,12 @@ import telran.coumputerizedWarehouse.dto.ContainerSensor;
 @RequiredArgsConstructor
 @Slf4j
 public class DataContainerAnalazerOpenAppl {
-	@Autowired
-	StreamBridge streamBridge;
+	
+	final StreamBridge streamBridge;
 	@Value("${app.sensor.producer.binding.name:containerInfoProducer-out-0}")
 	String bindingName;
-	@Autowired
-	SensorReduser sensorReduser;
+	
+	final SensorReduser sensorReduser;
 	public static void main(String[] args) {
 		SpringApplication.run(DataContainerAnalazerOpenAppl.class, args);
 
@@ -36,9 +36,11 @@ public class DataContainerAnalazerOpenAppl {
 		
 	}
 	void analize(ContainerSensor sensorData) {
+		log.trace("received sensor Data: {}", sensorData);
 		ContainerDemand res=sensorReduser.sensoreReduse(sensorData);
 		if(res!=null) {
 			streamBridge.send(bindingName,res);
+			log.debug("order demand {} has been sent to {}", res, bindingName);
 		}
 	}
 

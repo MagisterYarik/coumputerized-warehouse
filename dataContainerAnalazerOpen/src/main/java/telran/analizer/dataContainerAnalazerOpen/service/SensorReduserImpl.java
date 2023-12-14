@@ -15,23 +15,33 @@ import telran.coumputerizedWarehouse.dto.ContainerSensor;
 @RequiredArgsConstructor
 @Slf4j
 public class SensorReduserImpl implements SensorReduser {
-	@Autowired
-	ContainerSensorRepo privState;
+
+	final ContainerSensorRepo privState;
 	@Value("${app.limit:0.5}")
 	double limit;
 
 	@Override
 	public ContainerDemand sensoreReduse(ContainerSensor sensorInfo) {
-		ContainerPriveuseState lastSensorInfo = privState.findById(sensorInfo.containerId()).orElse(null);
-		ContainerPriveuseState newSensorInfo = new ContainerPriveuseState(sensorInfo.containerId(),
-				sensorInfo.currentVolume());
+		long id = sensorInfo.containerId();
+
+		ContainerPriveuseState lastSensorInfo = privState.findById(id).orElse(null);
+		if (privState == null)
+			log.debug("container {} not found in Redis", id);
+		ContainerPriveuseState newSensorInfo = new ContainerPriveuseState(id, sensorInfo.currentVolume());
 		privState.save(newSensorInfo);
-		ContainerDemand res=null;
-		 if (newSensorInfo.getCurrentVolume() <= limit&&(lastSensorInfo == null|| lastSensorInfo.getCurrentVolume()>limit) )
-			res= new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
+		log.trace("Redis updated for container {}",id);
+
+		ContainerDemand res = null;
+		if (newSensorInfo.getCurrentVolume() <= limit
+				&& (lastSensorInfo == null || lastSensorInfo.getCurrentVolume() > limit)) {
+			res = new ContainerDemand(newSensorInfo.getContainerId(), 1 - newSensorInfo.getCurrentVolume());
+			log.debug("Create order demand {} for container {}", res, id);
+
+		}else
+			log.trace("no order demand for container {}", id);
 		
 		return res;
-		
+
 	}
 
 }
