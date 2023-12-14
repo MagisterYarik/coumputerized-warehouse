@@ -101,5 +101,6 @@
 
 	<modules>
 		<module>dataContainerAnalazerOpen</module>
+		<module>RandomGeneratorConteinerInfo</module>
 	</modules>
 </project>
