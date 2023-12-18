@@ -28,8 +28,9 @@ public class DBWriter {
 	}
 	void saveLog(ContainerSensorChanged sensorData) {
 		log.trace("received sensor Data: {}", sensorData);
-		repo.save(new ContainerInfo(sensorData.containerId(),LocalDate.now(), sensorData.currentVolume(),sensorData.prevVolume()));
-		log.debug("save sensor Data: {}", sensorData);
+		ContainerInfo res=new ContainerInfo(sensorData.containerId(),LocalDate.now(), sensorData.currentVolume(),sensorData.prevVolume());
+		repo.save(res);
+		log.debug("save sensor Data: {}", res);
 
 	}
 }
