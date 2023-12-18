@@ -26,12 +26,14 @@ public class ContainerInfo {
 	long containerId;
 	LocalDate timestamp;
 	double sensorValue;
+	double sensorPrevValue;
 	
 	
-	public ContainerInfo(long containerId, LocalDate timestamp, double sensorValue) {
+	public ContainerInfo(long containerId, LocalDate timestamp, double sensorValue, double sensorPrevValue) {
 		super();
 		this.containerId = containerId;
 		this.timestamp = timestamp;
 		this.sensorValue = sensorValue;
+		this.sensorPrevValue = sensorPrevValue;
 	}
 }
