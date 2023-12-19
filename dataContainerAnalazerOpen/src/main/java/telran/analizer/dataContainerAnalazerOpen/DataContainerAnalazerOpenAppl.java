@@ -14,6 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 import telran.analizer.dataContainerAnalazerOpen.service.SensorReduser;
 import telran.coumputerizedWarehouse.dto.ContainerDemand;
 import telran.coumputerizedWarehouse.dto.ContainerSensor;
+import telran.coumputerizedWarehouse.dto.ContainerSensorChanged;
 
 @SpringBootApplication
 @RequiredArgsConstructor
@@ -31,11 +32,11 @@ public class DataContainerAnalazerOpenAppl {
 	}
 	
 	@Bean
-	Consumer<ContainerSensor> containerInfoConsumer(){
+	Consumer<ContainerSensorChanged> containerInfoConsumer(){
 		return this::analize;
 		
 	}
-	void analize(ContainerSensor sensorData) {
+	void analize(ContainerSensorChanged sensorData) {
 		log.trace("received sensor Data: {}", sensorData);
 		ContainerDemand res=sensorReduser.sensoreReduse(sensorData);
 		if(res!=null) {
