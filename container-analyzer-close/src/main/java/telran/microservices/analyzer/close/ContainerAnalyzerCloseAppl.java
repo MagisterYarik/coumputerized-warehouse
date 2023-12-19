@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
-import telran.coumputerizedWarehouse.dto.ContainerSensor;
+import telran.coumputerizedWarehouse.dto.ContainerSensorChanged;
 import telran.coumputerizedWarehouse.dto.OrderRequestClose;
 import telran.microservices.analyzer.close.service.ContainerAnalyzeClose;
 
@@ -30,11 +30,11 @@ public class ContainerAnalyzerCloseAppl {
 	}
 	
 	@Bean
-	Consumer<ContainerSensor> containerInfoConsumer(){
+	Consumer<ContainerSensorChanged> containerInfoConsumer(){
 		return this::analyze;
 		
 	}
-	void analyze(ContainerSensor sensorData) {
+	void analyze(ContainerSensorChanged sensorData) {
 		OrderRequestClose res=orderAnalyzeClose.SensorDataAnalyzeClose(sensorData);
 		if(res!=null) {
 			streamBridge.send(bindingName,res);

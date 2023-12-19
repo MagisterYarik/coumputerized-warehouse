@@ -18,7 +18,7 @@ public class OrderDataProxyImpl implements OrderDataProxy {
 	RestTemplate rest;
 	@Value("#{${ServiceUrlMap}['getOrderData'] ?: 'http://localhost:8080'")
 	String url;
-	@Value("#{${ServiceCommandMap}['getOrderDataByContainerId'] ?: '/getByContainerId'")
+	@Value("#{${ServiceCommandMap}['getOrderDataByContainerId'] ?: '/getByContainerId/'")
 	String command;
 
 	@Override
