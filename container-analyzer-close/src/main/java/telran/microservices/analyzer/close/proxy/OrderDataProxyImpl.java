@@ -16,15 +16,15 @@ import telran.coumputerizedWarehouse.dto.OrderDataHeader;
 public class OrderDataProxyImpl implements OrderDataProxy {
 	@Autowired
 	RestTemplate rest;
-	@Value("#{${ServiceUrlMap}['getOrderData'] ?: 'http://localhost:8080'")
+	@Value("${services.url.getOrderData: 'http://localhost:8080'}")
 	String url;
-	@Value("#{${ServiceCommandMap}['getOrderDataByContainerId'] ?: '/getByContainerId/'")
+	@Value("${services.command.getOrderDataByContainerId: '/getByContainerId/'}")
 	String command;
+	ParameterizedTypeReference<List<OrderDataHeader>> classRef = new ParameterizedTypeReference<List<OrderDataHeader>>(){};
 
 	@Override
 	public List<OrderDataHeader> openOrderDataByContainerId(long container_id) {
-		ResponseEntity<List<OrderDataHeader>> response = rest.exchange(url+command+container_id, HttpMethod.GET, null,
-				new ParameterizedTypeReference<List<OrderDataHeader>>(){});
+		ResponseEntity<List<OrderDataHeader>> response = rest.exchange(url+command+container_id, HttpMethod.GET, null, classRef);
 		return response.getBody();
 	}
 
