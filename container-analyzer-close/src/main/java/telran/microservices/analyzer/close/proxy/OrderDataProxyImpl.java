@@ -22,7 +22,7 @@ public class OrderDataProxyImpl implements OrderDataProxy {
 	String command;
 
 	@Override
-	public List<OrderDataHeader> OpenOrderDataByContainerId(long container_id) {
+	public List<OrderDataHeader> openOrderDataByContainerId(long container_id) {
 		ResponseEntity<List<OrderDataHeader>> response = rest.exchange(url+command+container_id, HttpMethod.GET, null,
 				new ParameterizedTypeReference<List<OrderDataHeader>>(){});
 		return response.getBody();

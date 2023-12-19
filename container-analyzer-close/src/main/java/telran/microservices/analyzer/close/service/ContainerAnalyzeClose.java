@@ -1,8 +1,10 @@
 package telran.microservices.analyzer.close.service;
 
+import java.util.List;
+
 import telran.coumputerizedWarehouse.dto.ContainerSensorChanged;
 import telran.coumputerizedWarehouse.dto.OrderRequestClose;
 
 public interface ContainerAnalyzeClose {
-	OrderRequestClose SensorDataAnalyzeClose(ContainerSensorChanged sensorData);
+	List<OrderRequestClose> sensorDataAnalyzeClose(ContainerSensorChanged sensorData);
 }

@@ -1,5 +1,6 @@
 package telran.microservices.analyzer.close;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ContainerAnalyzerCloseAppl {
 		
 	}
 	void analyze(ContainerSensorChanged sensorData) {
-		OrderRequestClose res=orderAnalyzeClose.SensorDataAnalyzeClose(sensorData);
+		List<OrderRequestClose> res=orderAnalyzeClose.sensorDataAnalyzeClose(sensorData);
 		if(res!=null) {
 			streamBridge.send(bindingName,res);
 		}
