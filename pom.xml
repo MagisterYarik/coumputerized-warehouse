@@ -112,5 +112,6 @@
 		<module>dataContainerAnalazerOpen</module>
 		<module>RandomGeneratorConteinerInfo</module>
 		<module>sensorInfoLog</module>
+		<module>DataContainerAnalizerChange</module>
 	</modules>
 </project>
