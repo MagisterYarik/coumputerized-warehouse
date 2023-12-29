@@ -11,6 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -36,8 +37,7 @@ public class ContainerAnalyzerCloseTest {
 	OutputDestination consumer;
 	private String producerBindingName = "orderAnalyzeCloseProducer-out-0";
 	private String consumerBindingName = "orderAnalyzeCloseConsumer-in-0";
-	@Value("${services.id.close:20}")
-	private static short service_id;
+	private static short service_id = 20;
 	
 	
 	@MockBean
@@ -53,8 +53,8 @@ public class ContainerAnalyzerCloseTest {
 	private static final ContainerSensorChanged CONTAINER_ORDER_EXISTS = new ContainerSensorChanged(CONTAINER_ID_ORDER_EXISTS, 0.9, 0.4);
 	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
 	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
-	private static final OrderRequestClose EXISTING_ORDER_REQUEST1 = new OrderRequestClose(80085, (char)service_id);
-	private static final OrderRequestClose EXISTING_ORDER_REQUEST2 = new OrderRequestClose(575, (char)service_id);
+	private static final OrderRequestClose EXISTING_ORDER_REQUEST1 = new OrderRequestClose(80085, service_id);
+	private static final OrderRequestClose EXISTING_ORDER_REQUEST2 = new OrderRequestClose(575, service_id);
 	
 	private static HashMap<Long, List<OrderDataHeader> > OrderMap = new HashMap<>();
 	private static HashMap<Long, List<OrderRequestClose> > RequestMap = new HashMap<>();
@@ -68,6 +68,11 @@ public class ContainerAnalyzerCloseTest {
 		RequestMap.put(CONTAINER_ID_ORDER_EXISTS, new ArrayList<>());
 		RequestMap.get(CONTAINER_ID_ORDER_EXISTS).add(EXISTING_ORDER_REQUEST1);
 		RequestMap.get(CONTAINER_ID_ORDER_EXISTS).add(EXISTING_ORDER_REQUEST2);
+	}
+	
+	@BeforeEach
+	void setUpEach() {
+		consumer.clear(producerBindingName);
 	}
 	
 	@Test

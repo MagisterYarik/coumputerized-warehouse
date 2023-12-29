@@ -24,7 +24,7 @@ public class CreateOrderRequestNewImpl implements CreateOrderRequestNew {
 		double demandUnit = container.product_capacity()*request_data.demandVolume();
 		if(container.product().discrete())
 			demandUnit = Math.floor(demandUnit);
-		return new OrderRequestNew(request_data.containerId(), container.product().product_id(), demandUnit, (char)service_id);
+		return new OrderRequestNew(request_data.containerId(), container.product().product_id(), demandUnit, service_id);
 	}
 
 }

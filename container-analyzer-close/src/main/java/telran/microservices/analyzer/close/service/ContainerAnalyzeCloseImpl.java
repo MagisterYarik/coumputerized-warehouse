@@ -29,7 +29,7 @@ public class ContainerAnalyzeCloseImpl implements ContainerAnalyzeClose {
 		if (orderList == null)
 			return null;
 		List<OrderRequestClose> requestList = new ArrayList<>();
-		orderList.forEach(order -> requestList.add(new OrderRequestClose(order.order_id(), (char)service_id)));
+		orderList.forEach(order -> requestList.add(new OrderRequestClose(order.order_id(), service_id)));
 		return requestList;
 	}
 
