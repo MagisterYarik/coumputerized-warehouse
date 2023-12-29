@@ -40,8 +40,12 @@ public class CreateOrderRequestAppl {
 	}
 	void createRequest(ContainerDemand demand) {
 		OrderRequestNew orderRequest = createRequest.createRequestByDemand(demand);
-		if(orderRequest!=null) 
+		if(orderRequest!=null) {
 			streamBridge.send(bindingName, orderRequest);
+			log.debug("Request for new order for container {} sent", demand.containerId());
+		} else {
+			log.trace("No request for container {} sent", demand.containerId());
+		}
 	}
 
 }

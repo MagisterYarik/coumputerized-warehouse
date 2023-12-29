@@ -21,11 +21,16 @@ public class CreateOrderRequestNewImpl implements CreateOrderRequestNew {
 	@Override
 	public OrderRequestNew createRequestByDemand(ContainerDemand request_data) {
 		ContainerData container = containerDataProxy.getContainerData(request_data.containerId());
-		if (container == null)
+		if (container == null) {
+			log.debug("Container {} not found", request_data.containerId());
 			return null;
+		}
 		double demandUnit = container.product_capacity()*request_data.demandVolume();
-		if(container.product().discrete())
+		if(container.product().discrete()) {
 			demandUnit = Math.floor(demandUnit);
+			log.trace("Discrete demand for product {} in container {}", container.product().product_id(), request_data.containerId());
+		}
+		log.debug("Generated request for order of {} {} of {} to container{}", demandUnit, container.product().units(), container.product().product_name(), request_data.containerId());
 		return new OrderRequestNew(request_data.containerId(), container.product().product_id(), demandUnit, service_id);
 	}
 
