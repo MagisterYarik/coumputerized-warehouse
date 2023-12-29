@@ -31,7 +31,6 @@ public class CreateOrderRequestAppl {
 
 	}
 	
-	
 	@Bean
 	Consumer<ContainerDemand> createOrderRequestNewConsumer(){
 		return this::createRequest;
@@ -40,7 +39,7 @@ public class CreateOrderRequestAppl {
 	void createRequest(ContainerDemand demand) {
 		OrderRequestNew orderRequest = createRequest.createRequestByDemand(demand);
 		if(orderRequest!=null) 
-			streamBridge.send(bindingName,orderRequest);
+			streamBridge.send(bindingName, orderRequest);
 	}
 
 }
