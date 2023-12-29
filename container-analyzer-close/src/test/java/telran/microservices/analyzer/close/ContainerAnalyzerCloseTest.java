@@ -37,8 +37,7 @@ public class ContainerAnalyzerCloseTest {
 	private String producerBindingName = "orderAnalyzeCloseProducer-out-0";
 	private String consumerBindingName = "orderAnalyzeCloseConsumer-in-0";
 	private static short service_id = 20;
-	
-	
+		
 	@MockBean
 	private OrderDataProxy orderDataProxy;
 
