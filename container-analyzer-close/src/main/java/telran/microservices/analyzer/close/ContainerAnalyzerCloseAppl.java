@@ -10,11 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
+import lombok.extern.slf4j.Slf4j;
 import telran.coumputerizedWarehouse.dto.ContainerSensorChanged;
 import telran.coumputerizedWarehouse.dto.OrderRequestClose;
 import telran.microservices.analyzer.close.service.ContainerAnalyzeClose;
 
 @SpringBootApplication
+@Slf4j
 public class ContainerAnalyzerCloseAppl {
 
 	@Autowired
@@ -38,8 +40,14 @@ public class ContainerAnalyzerCloseAppl {
 	void analyze(ContainerSensorChanged sensorData) {
 		List<OrderRequestClose> orderList = orderAnalyzeClose.sensorDataAnalyzeClose(sensorData);
 		if(orderList!=null) {
-			orderList.forEach(order -> streamBridge.send(bindingName,order));
+			orderList.forEach(order -> {
+				streamBridge.send(bindingName,order);
+				log.debug("Request to close order {} for container {} sent", order.order_id(), sensorData.containerId());				
+				});			
+		} else {
+			log.trace("No request for container {} sent", sensorData.containerId());
 		}
+			
 	}
 
 }

@@ -4,12 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import lombok.extern.slf4j.Slf4j;
 import telran.coumputerizedWarehouse.dto.ContainerData;
 import telran.coumputerizedWarehouse.dto.ContainerDemand;
 import telran.coumputerizedWarehouse.dto.OrderRequestNew;
 import telran.microservices.order.request.proxy.ContainerDataProxy;
 
 @Service
+@Slf4j
 public class CreateOrderRequestNewImpl implements CreateOrderRequestNew {
 	@Value("${services.id.new:30}")
 	private short service_id;

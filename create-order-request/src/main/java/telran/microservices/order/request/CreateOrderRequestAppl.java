@@ -9,12 +9,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.context.annotation.Bean;
 
+import lombok.extern.slf4j.Slf4j;
 import telran.coumputerizedWarehouse.dto.ContainerDemand;
 import telran.coumputerizedWarehouse.dto.OrderRequestNew;
 import telran.microservices.order.request.service.CreateOrderRequestNew;
 
 
 @SpringBootApplication
+@Slf4j
 public class CreateOrderRequestAppl {
 
 
