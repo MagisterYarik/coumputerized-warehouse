@@ -5,5 +5,7 @@
     <artifactId>computerized-storehouse</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>container-analyzer-close</artifactId>
+  <artifactId>create-order-request</artifactId>
+  <name>create-order-request</name>
+  <description>Create order request from data from analyzer</description>
 </project>

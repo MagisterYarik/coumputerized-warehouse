@@ -102,5 +102,6 @@
 	<modules>
 		<module>dataContainerAnalazerOpen</module>
 		<module>container-analyzer-close</module>
+		<module>create-order-request</module>
 	</modules>
 </project>

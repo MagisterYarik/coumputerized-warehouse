@@ -15,11 +15,11 @@ import telran.microservices.analyzer.close.proxy.OrderDataProxy;
 @Service
 public class ContainerAnalyzeCloseImpl implements ContainerAnalyzeClose {
 	@Value("${container.limit.close:0.5}")
-	double limit;
+	private double limit;
 	@Value("${services.id.close:20}")
-	short service_id;
+	private short service_id;
 	@Autowired
-	OrderDataProxy orderDataProxy;
+	private OrderDataProxy orderDataProxy;
 
 	@Override
 	public List<OrderRequestClose> sensorDataAnalyzeClose(ContainerSensorChanged sensorData) {

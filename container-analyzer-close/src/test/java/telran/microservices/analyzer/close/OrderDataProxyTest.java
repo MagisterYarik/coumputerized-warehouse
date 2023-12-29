@@ -28,20 +28,20 @@ import telran.microservices.analyzer.close.proxy.OrderDataProxy;
 @SpringBootTest
 public class OrderDataProxyTest {
 	@Autowired
-	OrderDataProxy orderDataProxy;
+	private OrderDataProxy orderDataProxy;
 	
 	@MockBean
-	RestTemplate restTemplate;
+	private RestTemplate restTemplate;
 	@Value("${services.url.getOrderData: 'http://localhost:8080'}")
-	String url;
+	private String url;
 	@Value("${services.command.getOrderDataByContainerId: '/getByContainerId/'}")
-	String command;
+	private String command;
 	ParameterizedTypeReference<List<OrderDataHeader>> classRef = new ParameterizedTypeReference<List<OrderDataHeader>>(){};
 	
 	private static final long CONTAINER_ID_ORDER_EXISTS = 1000;
 	private static final long CONTAINER_ID_ORDER_NONE = 2200;
-	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, 100, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
-	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, 100, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
+	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
+	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
 	
 	private static HashMap<Long, List<OrderDataHeader> > OrderMap = new HashMap<>();
 	

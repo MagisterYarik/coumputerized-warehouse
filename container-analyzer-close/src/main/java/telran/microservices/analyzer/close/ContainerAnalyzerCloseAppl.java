@@ -19,7 +19,7 @@ public class ContainerAnalyzerCloseAppl {
 
 	@Autowired
 	StreamBridge streamBridge;
-	@Value("${app.sensor.producer.binding.name:orderCloseRequest-out-0}")
+	@Value("${app.analyze.close.producer.binding.name:orderAnalyzeCloseProducer-out-0}")
 	String bindingName;
 	
 	@Autowired
@@ -31,14 +31,14 @@ public class ContainerAnalyzerCloseAppl {
 	}
 	
 	@Bean
-	Consumer<ContainerSensorChanged> containerInfoConsumer(){
+	Consumer<ContainerSensorChanged> orderAnalyzeCloseConsumer(){
 		return this::analyze;
 		
 	}
 	void analyze(ContainerSensorChanged sensorData) {
-		List<OrderRequestClose> res=orderAnalyzeClose.sensorDataAnalyzeClose(sensorData);
-		if(res!=null) {
-			streamBridge.send(bindingName,res);
+		List<OrderRequestClose> orderList = orderAnalyzeClose.sensorDataAnalyzeClose(sensorData);
+		if(orderList!=null) {
+			orderList.forEach(order -> streamBridge.send(bindingName,order));
 		}
 	}
 
