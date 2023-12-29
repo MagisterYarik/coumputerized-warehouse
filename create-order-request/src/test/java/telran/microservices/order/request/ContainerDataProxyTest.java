@@ -4,10 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -21,7 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import telran.coumputerizedWarehouse.dto.ContainerData;
-import telran.coumputerizedWarehouse.dto.OrderDataHeader;
 import telran.coumputerizedWarehouse.dto.ProductData;
 import telran.microservices.order.request.proxy.ContainerDataProxy;
 
@@ -50,7 +46,7 @@ public class ContainerDataProxyTest {
 	}
 	
 	@Test
-	void ordersNoneTest() {
+	void containerNoneTest() {
 		when(restTemplate.exchange(url+command+CONTAINER_ID_NONE, HttpMethod.GET, null, ContainerData.class))
 		.thenReturn(new ResponseEntity(null, HttpStatusCode.valueOf(200)));
 		
@@ -58,7 +54,7 @@ public class ContainerDataProxyTest {
 	}
 	
 	@Test
-	void ordersExistsTest() {
+	void containerExistsTest() {
 		when(restTemplate.exchange(url+command+CONTAINER_ID_EXISTS, HttpMethod.GET, null, ContainerData.class))
 		.thenReturn(new ResponseEntity(OrderMap.get(CONTAINER_ID_EXISTS), HttpStatusCode.valueOf(200)));
 		
