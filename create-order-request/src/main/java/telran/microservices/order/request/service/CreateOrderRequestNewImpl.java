@@ -14,7 +14,7 @@ import telran.microservices.order.request.proxy.ContainerDataProxy;
 @Slf4j
 public class CreateOrderRequestNewImpl implements CreateOrderRequestNew {
 	@Value("${services.id.new:30}")
-	private short service_id;
+	private short serviceId;
 	@Autowired
 	private ContainerDataProxy containerDataProxy;
 
@@ -25,13 +25,13 @@ public class CreateOrderRequestNewImpl implements CreateOrderRequestNew {
 			log.debug("Container {} not found", request_data.containerId());
 			return null;
 		}
-		double demandUnit = container.product_capacity()*request_data.demandVolume();
+		double demandUnit = container.productCapacity()*request_data.demandVolume();
 		if(container.product().discrete()) {
 			demandUnit = Math.floor(demandUnit);
-			log.trace("Discrete demand for product {} in container {}", container.product().product_id(), request_data.containerId());
+			log.trace("Discrete demand for product {} in container {}", container.product().productId(), request_data.containerId());
 		}
-		log.debug("Generated request for order of {} {} of {} to container{}", demandUnit, container.product().units(), container.product().product_name(), request_data.containerId());
-		return new OrderRequestNew(request_data.containerId(), container.product().product_id(), demandUnit, service_id);
+		log.debug("Generated request for order of {} {} of {} to container{}", demandUnit, container.product().units(), container.product().productName(), request_data.containerId());
+		return new OrderRequestNew(request_data.containerId(), container.product().productId(), demandUnit, serviceId);
 	}
 
 }

@@ -36,7 +36,7 @@ public class ContainerAnalyzerCloseTest {
 	OutputDestination consumer;
 	private String producerBindingName = "orderAnalyzeCloseProducer-out-0";
 	private String consumerBindingName = "orderAnalyzeCloseConsumer-in-0";
-	private static short service_id = 20;
+	private static short serviceId = 20;
 		
 	@MockBean
 	private OrderDataProxy orderDataProxy;
@@ -51,8 +51,8 @@ public class ContainerAnalyzerCloseTest {
 	private static final ContainerSensorChanged CONTAINER_ORDER_EXISTS = new ContainerSensorChanged(CONTAINER_ID_ORDER_EXISTS, 0.9, 0.4);
 	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
 	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
-	private static final OrderRequestClose EXISTING_ORDER_REQUEST1 = new OrderRequestClose(80085, service_id);
-	private static final OrderRequestClose EXISTING_ORDER_REQUEST2 = new OrderRequestClose(575, service_id);
+	private static final OrderRequestClose EXISTING_ORDER_REQUEST1 = new OrderRequestClose(80085, serviceId);
+	private static final OrderRequestClose EXISTING_ORDER_REQUEST2 = new OrderRequestClose(575, serviceId);
 	
 	private static HashMap<Long, List<OrderDataHeader> > OrderMap = new HashMap<>();
 	private static HashMap<Long, List<OrderRequestClose> > RequestMap = new HashMap<>();

@@ -19,7 +19,7 @@ public class ContainerAnalyzeCloseImpl implements ContainerAnalyzeClose {
 	@Value("${container.limit.close:0.5}")
 	private double limit;
 	@Value("${services.id.close:20}")
-	private short service_id;
+	private short serviceId;
 	@Autowired
 	private OrderDataProxy orderDataProxy;
 
@@ -40,8 +40,8 @@ public class ContainerAnalyzeCloseImpl implements ContainerAnalyzeClose {
 		}
 		List<OrderRequestClose> requestList = new ArrayList<>();
 		orderList.forEach(order -> {
-			log.debug("Request to close order {} for container {} generated", order.order_id(), sensorData.containerId());
-			requestList.add(new OrderRequestClose(order.order_id(), service_id));
+			log.debug("Request to close order {} for container {} generated", order.orderId(), sensorData.containerId());
+			requestList.add(new OrderRequestClose(order.orderId(), serviceId));
 			});
 		return requestList;
 	}

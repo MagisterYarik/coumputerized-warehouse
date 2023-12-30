@@ -42,7 +42,7 @@ public class ContainerAnalyzerCloseAppl {
 		if(orderList!=null) {
 			orderList.forEach(order -> {
 				streamBridge.send(bindingName,order);
-				log.debug("Request to close order {} for container {} sent", order.order_id(), sensorData.containerId());				
+				log.debug("Request to close order {} for container {} sent", order.orderId(), sensorData.containerId());				
 				});			
 		} else {
 			log.trace("No request for container {} sent", sensorData.containerId());
