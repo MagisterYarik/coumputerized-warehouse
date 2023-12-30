@@ -104,5 +104,6 @@
 		<module>container-analyzer-close</module>
 		<module>create-order-request</module>
 		<module>database-select-order</module>
+		<module>database-select-container</module>
 	</modules>
 </project>

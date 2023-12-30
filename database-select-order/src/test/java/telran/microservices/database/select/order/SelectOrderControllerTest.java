@@ -21,7 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import telran.coumputerizedWarehouse.dto.OrderDataHeader;
-import telran.microservices.database.select.order.repo.service.SelectOrder;
+import telran.microservices.database.select.order.service.SelectOrder;
 
 @WebMvcTest
 public class SelectOrderControllerTest {

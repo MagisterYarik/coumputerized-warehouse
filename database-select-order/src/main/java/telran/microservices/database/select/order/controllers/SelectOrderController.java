@@ -1,4 +1,4 @@
-package telran.microservices.database.select.order.controller;
+package telran.microservices.database.select.order.controllers;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
 import telran.coumputerizedWarehouse.dto.OrderDataHeader;
-import telran.microservices.database.select.order.repo.service.SelectOrder;
+import telran.microservices.database.select.order.service.SelectOrder;
 
 @RestController
 public class SelectOrderController {

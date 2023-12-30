@@ -17,7 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.jdbc.Sql;
 
 import telran.coumputerizedWarehouse.dto.OrderDataHeader;
-import telran.microservices.database.select.order.repo.service.SelectOrder;
+import telran.microservices.database.select.order.service.SelectOrder;
 
 @SpringBootTest
 @Sql(scripts = "db-test-script.sql")
