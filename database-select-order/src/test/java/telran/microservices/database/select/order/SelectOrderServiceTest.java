@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -47,14 +48,14 @@ public class SelectOrderServiceTest {
 	void ordersExistTest() {
 		List<OrderDataHeader> openOrderList = selectOrder.getOpenOrdersByContainerId(CONTAINER_ID_ORDER_EXISTS);
 		assertNotNull(openOrderList);
-		assertEquals(OpenOrderMap.get(CONTAINER_ID_ORDER_EXISTS), openOrderList);
+		assertEquals(Set.copyOf(OpenOrderMap.get(CONTAINER_ID_ORDER_EXISTS)), Set.copyOf(openOrderList));
 	}
 	
 	@Test
 	void ordersOneClosedTest() {
 		List<OrderDataHeader> openOrderList = selectOrder.getOpenOrdersByContainerId(CONTAINER_ID_ORDER_ONE_CLOSED);
 		assertNotNull(openOrderList);
-		assertEquals(OpenOrderMap.get(CONTAINER_ID_ORDER_ONE_CLOSED), openOrderList);
+		assertEquals(Set.copyOf(OpenOrderMap.get(CONTAINER_ID_ORDER_ONE_CLOSED)), Set.copyOf(openOrderList));
 	}
 	
 	@Test

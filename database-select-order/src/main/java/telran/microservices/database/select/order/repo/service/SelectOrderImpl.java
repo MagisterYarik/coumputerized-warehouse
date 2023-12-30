@@ -22,7 +22,7 @@ public class SelectOrderImpl implements SelectOrder {
 	public List<OrderDataHeader> getOpenOrdersByContainerId(long id) {
 		List<OrderHeader> orderList = orderRepo.getOpenByContainerId(id);
 		if (orderList.isEmpty()) {
-			throw new IllegalArgumentException("no open orders for container " + id);
+			return null;
 		}
 		List<OrderDataHeader> result = new ArrayList<OrderDataHeader>();
 		orderList.forEach(order -> result.add(new OrderDataHeader(order)));
