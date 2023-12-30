@@ -19,7 +19,7 @@ public class SelectContainerImpl implements SelectContainer {
 	public ContainerData getContainerById(long id) {
 		Container container = containerRepo.findByContainerId(id);
 		if (container == null) {
-			return null;
+			throw new IllegalArgumentException("No container for id " + id);
 		}
 		ContainerData result = new ContainerData(container);
 		return result;

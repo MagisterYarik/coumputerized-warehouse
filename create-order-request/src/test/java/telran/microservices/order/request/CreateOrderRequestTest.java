@@ -38,7 +38,7 @@ public class CreateOrderRequestTest {
 	OutputDestination consumer;
 	private String producerBindingName = "createOrderRequestNewProducer-out-0";
 	private String consumerBindingName = "createOrderRequestNewConsumer-in-0";
-	private static short service_id = 30;
+	private static short serviceId = 30;
 
 	@MockBean
 	private ContainerDataProxy containerDataProxy;
@@ -55,8 +55,8 @@ public class CreateOrderRequestTest {
 	private static final ProductData PRODUCT_DATA_NOT_DISCRETE = new ProductData(PRODUCT_ID_NOT_DISCRETE, "Potato", "kg", 20, false);
 	private static final ContainerData CONTAINER_DATA_DISCRETE = new ContainerData(CONTAINER_ID_DISCRETE, PRODUCT_DATA_DISCRETE, 100);
 	private static final ContainerData CONTAINER_DATA_NOT_DISCRETE = new ContainerData(CONTAINER_ID_NOT_DISCRETE, PRODUCT_DATA_NOT_DISCRETE, 100);
-	private static final OrderRequestNew ORDER_REQUEST_DISCRETE = new OrderRequestNew(CONTAINER_ID_DISCRETE, PRODUCT_ID_DISCRETE, 73.0, service_id);
-	private static final OrderRequestNew ORDER_REQUEST_NOT_DISCRETE = new OrderRequestNew(CONTAINER_ID_NOT_DISCRETE, PRODUCT_ID_NOT_DISCRETE, 73.3, service_id);
+	private static final OrderRequestNew ORDER_REQUEST_DISCRETE = new OrderRequestNew(CONTAINER_ID_DISCRETE, PRODUCT_ID_DISCRETE, 73.0, serviceId);
+	private static final OrderRequestNew ORDER_REQUEST_NOT_DISCRETE = new OrderRequestNew(CONTAINER_ID_NOT_DISCRETE, PRODUCT_ID_NOT_DISCRETE, 73.3, serviceId);
 	
 	private static HashMap<Long, ContainerData > OrderMap = new HashMap<>();
 	private static HashMap<Long, OrderRequestNew > RequestMap = new HashMap<>();
