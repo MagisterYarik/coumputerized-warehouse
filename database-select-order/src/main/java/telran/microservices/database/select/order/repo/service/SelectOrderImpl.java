@@ -16,7 +16,6 @@ import telran.microservices.database.select.order.repo.OrderHeaderRepo;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class SelectOrderImpl implements SelectOrder {
-	@Autowired
 	final OrderHeaderRepo orderRepo;
 
 	@Override

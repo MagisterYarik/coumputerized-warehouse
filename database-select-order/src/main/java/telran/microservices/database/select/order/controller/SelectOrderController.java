@@ -14,10 +14,9 @@ import telran.coumputerizedWarehouse.dto.OrderDataHeader;
 import telran.microservices.database.select.order.repo.service.SelectOrder;
 
 @RestController
-@RequiredArgsConstructor
 public class SelectOrderController {
 	@Autowired
-	final SelectOrder selectOrder;
+	private SelectOrder selectOrder;
 	
 	@GetMapping("getByContainerId/{id}")
 	ResponseEntity<?> getOpenOrdersByContainerId(@PathVariable long id) {

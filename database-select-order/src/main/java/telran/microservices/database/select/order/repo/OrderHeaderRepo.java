@@ -10,7 +10,7 @@ import telran.coumputerizedWarehouse.entity.OrderHeader;
 
 public interface OrderHeaderRepo extends JpaRepository<OrderHeader, Long>{
 	
-	@Query("select ord from OrderDataHeader ord where ord.containerId = :id and ord.status < 21")
+	@Query("select ord from OrderHeader ord where ord.containerId = :id and ord.status < 21")
 	List<OrderHeader> getOpenByContainerId(@Param("id") long id);
 
 }
