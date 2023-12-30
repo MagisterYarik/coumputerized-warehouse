@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import lombok.extern.slf4j.Slf4j;
 import telran.coumputerizedWarehouse.dto.OrderDataHeader;
+import telran.microservices.analyzer.close.service.ContainerAnalyzeCloseImpl;
 
 @Service
 public class OrderDataProxyImpl implements OrderDataProxy {
@@ -25,7 +28,11 @@ public class OrderDataProxyImpl implements OrderDataProxy {
 	@Override
 	public List<OrderDataHeader> openOrderDataByContainerId(long container_id) {
 		ResponseEntity<List<OrderDataHeader>> response = rest.exchange(url+command+container_id, HttpMethod.GET, null, classRef);
-		return response.getBody();
+		if (response.getStatusCode() == HttpStatus.OK)
+			return response.getBody();
+		else {
+			return null;
+		}
 	}
 
 }

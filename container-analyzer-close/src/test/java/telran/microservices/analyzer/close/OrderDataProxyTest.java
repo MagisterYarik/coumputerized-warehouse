@@ -16,6 +16,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -55,7 +56,7 @@ public class OrderDataProxyTest {
 	@Test
 	void ordersNoneTest() {
 		when(restTemplate.exchange(url+command+CONTAINER_ID_ORDER_NONE, HttpMethod.GET, null, classRef))
-		.thenReturn(new ResponseEntity(null, HttpStatusCode.valueOf(200)));
+		.thenReturn(new ResponseEntity("Error", HttpStatus.NOT_FOUND));
 		
 		assertNull(orderDataProxy.openOrderDataByContainerId(CONTAINER_ID_ORDER_NONE));		
 	}
@@ -63,7 +64,7 @@ public class OrderDataProxyTest {
 	@Test
 	void ordersExistsTest() {
 		when(restTemplate.exchange(url+command+CONTAINER_ID_ORDER_EXISTS, HttpMethod.GET, null, classRef))
-		.thenReturn(new ResponseEntity(OrderMap.get(CONTAINER_ID_ORDER_EXISTS), HttpStatusCode.valueOf(200)));
+		.thenReturn(new ResponseEntity(OrderMap.get(CONTAINER_ID_ORDER_EXISTS), HttpStatus.OK));
 		
 		assertEquals(OrderMap.get(CONTAINER_ID_ORDER_EXISTS), orderDataProxy.openOrderDataByContainerId(CONTAINER_ID_ORDER_EXISTS));	
 		
