@@ -41,8 +41,8 @@ public class OrderDataProxyTest {
 	
 	private static final long CONTAINER_ID_ORDER_EXISTS = 1000;
 	private static final long CONTAINER_ID_ORDER_NONE = 2200;
-	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
-	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
+	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (short)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
+	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (short)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
 	
 	private static HashMap<Long, List<OrderDataHeader> > OrderMap = new HashMap<>();
 	

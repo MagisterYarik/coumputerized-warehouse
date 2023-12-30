@@ -49,8 +49,8 @@ public class ContainerAnalyzerCloseTest {
 	private static final ContainerSensorChanged CONTAINER_ORDER_NONE = new ContainerSensorChanged(CONTAINER_ID_ORDER_NONE, 0.9, 0.4);
 	private static final long CONTAINER_ID_ORDER_EXISTS = 4000;
 	private static final ContainerSensorChanged CONTAINER_ORDER_EXISTS = new ContainerSensorChanged(CONTAINER_ID_ORDER_EXISTS, 0.9, 0.4);
-	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
-	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (char)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
+	private static final OrderDataHeader EXISTING_ORDER_DATA1 = new OrderDataHeader(80085, (short)1, CONTAINER_ID_ORDER_EXISTS, 1518, 75.5, LocalDate.now(), LocalDate.now().plusWeeks(1));
+	private static final OrderDataHeader EXISTING_ORDER_DATA2 = new OrderDataHeader(575, (short)1, CONTAINER_ID_ORDER_EXISTS, 1518, 35.5, LocalDate.now(), LocalDate.now().plusWeeks(2));
 	private static final OrderRequestClose EXISTING_ORDER_REQUEST1 = new OrderRequestClose(80085, serviceId);
 	private static final OrderRequestClose EXISTING_ORDER_REQUEST2 = new OrderRequestClose(575, serviceId);
 	
