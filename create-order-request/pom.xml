@@ -5,11 +5,7 @@
     <artifactId>computerized-storehouse</artifactId>
     <version>0.0.1</version>
   </parent>
-  <artifactId>dataContainerAnalazerOpen</artifactId>
-  <dependencies>
-	  <dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-data-redis</artifactId>
-	  </dependency>
-  </dependencies>
+  <artifactId>create-order-request</artifactId>
+  <name>create-order-request</name>
+  <description>Create order request from data from analyzer</description>
 </project>
