@@ -55,6 +55,15 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-stream-test-binder</artifactId>
 			<scope>test</scope>
@@ -101,6 +110,9 @@
 
 	<modules>
 		<module>dataContainerAnalazerOpen</module>
+		<module>RandomGeneratorConteinerInfo</module>
+		<module>sensorInfoLog</module>
+		<module>DataContainerAnalizerChange</module>
 		<module>container-analyzer-close</module>
 		<module>create-order-request</module>
 		<module>database-select-order</module>

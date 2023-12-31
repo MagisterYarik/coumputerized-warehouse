@@ -1,4 +1,4 @@
-package telran.analizer.dataContainerAnalazerOpen.entitise;
+package telran.analizer.DataContainerAnalazerChange.entitise;
 
 import java.util.Objects;
 
