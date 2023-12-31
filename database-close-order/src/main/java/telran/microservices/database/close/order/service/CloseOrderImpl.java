@@ -19,6 +19,8 @@ import telran.microservices.database.close.order.repo.OrderHeaderRepo;
 public class CloseOrderImpl implements CloseOrder {
 	@Value("${database.order.status.closed:23}")
 	private short statusClosed;
+	@Value("${database.order.status.treshold.close:13}")
+	private short closeThreshold;
 	private final OrderHeaderRepo orderRepo;
 
 	@Override
@@ -26,11 +28,8 @@ public class CloseOrderImpl implements CloseOrder {
 		Optional<OrderHeader> orderToClose = orderRepo.findById(request.orderId());
 		if (orderToClose.isEmpty()) 
 			throw new IllegalArgumentException("Order "+request.orderId()+" not found");
-		//Stump, for actual impl need additional status checks
-		if (orderToClose.get().getStatus() == statusClosed) {
-			log.debug("Order {} was already closed", request.orderId());
-			return;
-		}			
+		if (orderToClose.get().getStatus() > closeThreshold) 
+			throw new IllegalArgumentException("Order "+request.orderId()+" has status "+orderToClose.get().getStatus()+" and cannot be closed");
 		orderToClose.get().setStatus(statusClosed);
 		orderRepo.save(orderToClose.get());
 		log.debug("Order {} closed by request from source {}", request.orderId(), request.requestSource());
