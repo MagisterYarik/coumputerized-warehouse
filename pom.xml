@@ -101,5 +101,11 @@
 
 	<modules>
 		<module>dataContainerAnalazerOpen</module>
+		<module>container-analyzer-close</module>
+		<module>create-order-request</module>
+		<module>database-select-order</module>
+		<module>database-select-container</module>
+		<module>database-close-order</module>
+		<module>database-create-order</module>
 	</modules>
 </project>
